@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/Kotarski/ts-functionaltypes#readme",
   "devDependencies": {
-   "typescript": "^3.4.3"
-  }
+    "typescript": "^3.4.3"
+  },
+  "main": "index.js"
 }

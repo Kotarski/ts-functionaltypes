@@ -48,10 +48,10 @@ const composefail = compose(
 
 ```
 # Install
-[https://www.npmjs.com/package/ts-strictargs](https://www.npmjs.com/package/ts-strictargs)
+[https://www.npmjs.com/package/ts-functionaltypess](https://www.npmjs.com/package/ts-functionaltypes)
 ```
 $ npm install --save-dev ts-strictargs
 ```
 
 # Github
-[https://github.com/Kotarski/ts-strictargs](https://github.com/Kotarski/ts-strictargs)
+[https://github.com/Kotarski/ts-functionaltypes](https://github.com/Kotarski/ts-functionaltypes)
