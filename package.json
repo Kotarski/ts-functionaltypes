@@ -1,0 +1,25 @@
+{
+  "name": "ts-functionaltypes",
+  "version": "1.0.2",
+  "description": "Provides types to specify how arguments are checked",
+  "types": "index.d.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kotarski/ts-functionaltypes.git"
+  },
+  "keywords": [
+    "Typescript"
+  ],
+  "author": "Edward Kotarski",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Kotarski/ts-functionaltypes/issues"
+  },
+  "homepage": "https://github.com/Kotarski/ts-functionaltypes#readme",
+  "devDependencies": {
+   "typescript": "^3.4.3"
+  }
+}
