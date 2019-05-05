@@ -48,9 +48,9 @@ const composefail = compose(
 
 ```
 # Install
-[https://www.npmjs.com/package/ts-functionaltypess](https://www.npmjs.com/package/ts-functionaltypes)
+[https://www.npmjs.com/package/ts-functionaltypes](https://www.npmjs.com/package/ts-functionaltypes)
 ```
-$ npm install --save-dev ts-strictargs
+$ npm install --save-dev ts-functionaltypes
 ```
 
 # Github
