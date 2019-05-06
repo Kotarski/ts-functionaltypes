@@ -55,6 +55,34 @@ const composefail = compose(
 )
 
 ```
+
+# Limitations
+```Typescript
+
+// Cannot detect that the input and output type of the sandwich filling should be the same
+const pipeWithIdentity = pipe(
+   (n: string) => "string",
+   <T extends any>(i: T) => i, 
+   (s: number) => 4 // Ideally would be error
+)
+
+const pipeWithIdentity2 = pipe(
+   (n: string) => "string",
+   <T extends number>(i: T) => i, // This does error
+   (s: number) => 4
+)
+
+// Resulting pipe interface: (string => any) 
+// Ideally would be: (string => number)
+const pipeWithIdentity3 = pipe(
+   (n: string) => "string",
+   (s: number) => 4,
+   <T extends any>(i: T) => i
+)
+
+
+```
+
 # Install
 [https://www.npmjs.com/package/ts-functionaltypes](https://www.npmjs.com/package/ts-functionaltypes)
 ```
