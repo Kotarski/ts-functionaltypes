@@ -35,31 +35,20 @@ type ParameterUnary<F extends Unary> = Parameters<F>["0"]
 // When we try to apply the actual type we get a mismatch which is easier to diagnose
 type UnariesToPiped<F extends Unary[]> = {
    [K in keyof F]:
-   K extends SNumbers[number] ? (
-      K extends "0" ? (
-         F[K]
-      ) : F[K] extends Unary ? (
-         ParameterUnary<F[S_N<K>]> extends ReturnType<F[PrevN<S_N<K>>]> ? (
-            F[K]
-         ) : (i: ReturnType<F[PrevN<S_N<K>>]>) => ReturnType<F[S_N<K>]>
-      ) : never
-   ): never
+   K extends SNumbers[number] ?
+      K extends "0"
+      ? F[K]
+   : (i: ReturnType<F[PrevN<S_N<K>>]>) => ReturnType<F[S_N<K>]>
+   : F[K]
 }
-
-// Tries to apply a unary array to the pipable version
-type Pipable<F extends Unary[]> = UnariesToPiped<F> extends F ? F : never
 
 type UnariesToComposed<F extends Unary[]> = {
    [K in keyof F]:
-   K extends SNumbers[number] ? (
-      K extends "0" ? (
-         F[K]
-      ) : F[K] extends Unary ? (
-         ParameterUnary<F[PrevN<S_N<K>>]> extends ReturnType<F[S_N<K>]> ? (
-            F[K]
-         ) : (i: ParameterUnary<F[S_N<K>]>) => ParameterUnary<F[PrevN<S_N<K>>]>
-      ) : never
-   ): never
+   K extends SNumbers[number] ?
+      K extends "0"
+      ? F[K]
+   : (i: ParameterUnary<F[S_N<K>]>) => ParameterUnary<F[PrevN<S_N<K>>]>
+   : F[K]
 }
 
 // Tries to apply a unary array to the composable version
@@ -69,10 +58,10 @@ type Composable<F extends Unary[]> = UnariesToComposed<F> extends F ? F : never
  * The type for the pipe function
  * @example const pipe: Pipe = (...fns) => x => fns.reduce((v, f) => f(v), x);
  */
-export type Pipe = <F extends Unary[]>(...funcs: Pipable<F>) => (i: ParameterUnary<F[0]>) => ReturnType<F[PrevN<F["length"]>]>
+export type Pipe = <F extends Unary[]>(...funcs: UnariesToPiped<F>) => (i: ParameterUnary<F[0]>) => ReturnType<F[PrevN<F["length"]>]>
 
 /**
  * The type for the compose function
  * @example const compose: Compose = (...fns) => x => fns.reduceRight((v, f) => f(v), x);
  */
-export type Compose = <F extends Unary[]>(...funcs: Composable<F>) => (i: ParameterUnary<F[PrevN<F["length"]>]>) => ReturnType<F[0]>
+export type Compose = <F extends Unary[]>(...funcs: UnariesToComposed<F>) => (i: ParameterUnary<F[PrevN<F["length"]>]>) => ReturnType<F[0]>
