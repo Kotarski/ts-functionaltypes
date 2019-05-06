@@ -23,6 +23,29 @@ const pipePass = pipe(
    (n: number) => 4
 )
 
+const pipeline = [
+   (s: number) => 4,
+   (n: number) => "hello",
+   (n: string) => 5,
+   (n: number) => 4
+] as const  // As const will keep pipeline as a tuple
+
+const pipeWithPipeline = pipe(
+   ...pipeline
+)
+
+const pipeline = [
+   (s: string) => 4,
+   (n: number) => "hello",
+   (n: string) => 5,
+   (n: number) => 4
+] as const
+
+const pipeWithPipeline = pipe(
+   ...pipeline
+)
+
+
 // Fails (correctly)
 const pipeFail = compose(
    (s: string) => 4,
@@ -34,14 +57,12 @@ const pipeFail = compose(
    (n: number) => 4
 )
 
-
 const composePass = compose(
    (s: string) => 4,
    (n: number) => "hello",
    (n: number) => 5,
    (s: string) => 4
 )
-
 
 // Fails (correctly)
 const composefail = compose(
@@ -53,6 +74,7 @@ const composefail = compose(
       */
    (s: string) => 4
 )
+
 
 ```
 

@@ -1,6 +1,6 @@
 {
   "name": "ts-functionaltypes",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Provides types to specify how arguments are checked",
   "types": "index.d.ts",
   "scripts": {
